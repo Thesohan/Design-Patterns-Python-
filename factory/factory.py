@@ -18,13 +18,23 @@ class Flash(Button):
     html = "<flash></flash>"
 
 class ButtonFactory:
+    IMAGE = "image"
+    INPUT = "input"
+    FLASH = "flash"
+    BUTTON_FACTORY_MAP = {
+        IMAGE:Image,
+        INPUT:Input,
+        FLASH:Flash,
+    }
+
     def create_button(self,button_type):
-        button_class = button_type.capitalize()
-        return globals()[button_class]
+        return self.BUTTON_FACTORY_MAP.get(button_type)()
+
 
 if __name__=='__main__':
     buttons = ["image","flash","input"]
     obj = ButtonFactory()
     for button in buttons:
-        print(obj.create_button(button))
+        butt = obj.create_button(button)
+        print(butt.get_html())
 

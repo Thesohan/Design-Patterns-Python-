@@ -1,3 +1,6 @@
+from cmath import log
+
+
 class Singleton:
     """
     This pattern restricts the instantiation of a class to one object. It is a type of creational pattern and involves
@@ -25,6 +28,7 @@ class Singleton:
 
 s = Singleton.get_instance()
 print(s)
+raise Exception("This class is singleton, Please call get_instance instead.")
 
 s = Singleton.get_instance()
 print(s)

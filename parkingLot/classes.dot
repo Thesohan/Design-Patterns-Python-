@@ -1,0 +1,9 @@
+digraph "classes" {
+rankdir=BT
+charset="utf-8"
+"main.Gate" [color="black", fontcolor="black", label=<{Gate|gate_id<br ALIGN="LEFT"/>parking_lot<br ALIGN="LEFT"/>|vehicle_entry(vehicle)<br ALIGN="LEFT"/>vehicle_exit(ticket)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"main.ParkingLot" [color="black", fontcolor="black", label=<{ParkingLot|lock : lock<br ALIGN="LEFT"/>spots : list<br ALIGN="LEFT"/>|add_spot(spot)<br ALIGN="LEFT"/>find_and_assign_spot(vehicle)<br ALIGN="LEFT"/>free_spot(spot_id)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"main.ParkingSpot" [color="black", fontcolor="black", label=<{ParkingSpot|is_available : bool<br ALIGN="LEFT"/>level<br ALIGN="LEFT"/>priority<br ALIGN="LEFT"/>spot_id<br ALIGN="LEFT"/>vehicle : NoneType<br ALIGN="LEFT"/>vehicle_type<br ALIGN="LEFT"/>|assign_vehicle(vehicle)<br ALIGN="LEFT"/>remove_vehicle()<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"main.ParkingTicket" [color="black", fontcolor="black", label=<{ParkingTicket|entry_time<br ALIGN="LEFT"/>spot<br ALIGN="LEFT"/>ticket_id : UUID<br ALIGN="LEFT"/>vehicle<br ALIGN="LEFT"/>|calculate_fee(exit_time)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"main.Vehicle" [color="black", fontcolor="black", label=<{Vehicle|vehicle_id<br ALIGN="LEFT"/>vehicle_type<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+}

@@ -19,6 +19,7 @@ class Singleton:
     @staticmethod
     def get_instance():
         if Singleton.__instance is None:
+            breakpoint()
             return Singleton()
         return Singleton.__instance
 
@@ -26,9 +27,8 @@ class Singleton:
 # s = Singleton()
 # print(s)
 
-s = Singleton.get_instance()
+s = Singleton()
 print(s)
-raise Exception("This class is singleton, Please call get_instance instead.")
 
-s = Singleton.get_instance()
+s = Singleton()
 print(s)

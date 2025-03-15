@@ -214,7 +214,7 @@ class StockExchange(ABC):
     def register_traders(self,trader:Trader)->None:
         pass 
     
-    def susbsribe_stock_to_trader(self,stock:Stock,trader:Trader)->None:
+    def subscribe_stock_to_trader(self,stock:Stock,trader:Trader)->None:
         if stock.name in self.stocks and trader in self.traders:
             trader.subscribe_stock(stock)
             if isinstance(trader,InsitutionalTrader):
@@ -222,6 +222,17 @@ class StockExchange(ABC):
             print(f"subscribed stock: {stock} by trader: {trader}")
 
 class NSE(StockExchange):
+    _instance = None
+
+    def __init__(self):
+        print("inside init")
+    def __new__(cls):
+        if cls._instance:
+            return cls._instance
+        else:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
 
     def process_orders(self,order:Order)->None:
         if order.stock.name not in self.stocks:
@@ -251,7 +262,7 @@ if __name__ == "__main__":
     insitutional_trader = Trader.get_trader_class(trader_type=TraderType.INSTITUTIONAL)
     trader:InsitutionalTrader = insitutional_trader(name='Sohan',trader_id='T1')
     stock_ex.register_traders(trader=trader)
-    stock_ex.susbsribe_stock_to_trader(stock=apple_stock,trader=trader)
+    stock_ex.subscribe_stock_to_trader(stock=apple_stock,trader=trader)
 
     order = Order(order_type=OrderType.BUY,trader=trader,stock=apple_stock,price=100,quantity=2)
     stock_ex.process_orders(order=order)

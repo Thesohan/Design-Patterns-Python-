@@ -123,7 +123,7 @@ if __name__ == "__main__":
         ticket = gate1.vehicle_entry(vehicle)
         if ticket:
             tickets.append(ticket)
-            print(tick)
+            print(ticket)
         time.sleep(0.5)  # Simulate delay between arrivals
 
     for ticket in tickets:

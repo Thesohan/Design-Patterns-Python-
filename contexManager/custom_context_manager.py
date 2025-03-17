@@ -28,9 +28,11 @@ class Timer:
 
     def __enter__(self):
         self.start_time = time.time() 
+        print("enter")
         return self 
     
     def __exit__(self,exc_type,exc_value,traceback):
+        print("exit")
         self.end_time = time.time()
         elasped_time = self.end_time - self.start_time
         print(f"Elapsed time: {elasped_time} seconds")
@@ -41,6 +43,7 @@ class Timer:
 
 @contextmanager    
 def timer():
+    print("hello timer")
     start_time = time.time()
     yield # Logic of __enter__ before yield and __exit__ after yield
     end_time = time.time()
@@ -51,6 +54,7 @@ def timer():
 
 if __name__ == "__main__":
     with Timer() as t:
+        print("running with")
         time.sleep(2) # Simulate some time-consuming operation
         t.how()
     

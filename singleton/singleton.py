@@ -19,7 +19,6 @@ class Singleton:
     @staticmethod
     def get_instance():
         if Singleton.__instance is None:
-            breakpoint()
             return Singleton()
         return Singleton.__instance
 
